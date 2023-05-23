@@ -1,1 +1,1 @@
-# programowanie
+tu bedzie kod i dzikosc
