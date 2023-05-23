@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tytuł</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <style>
+main {
+	display: grid;
+	grid-template-areas:
+		"slides aside"
+		"nav aside"
+}
+#sildes { grid-area: slides; }
+#slides [data-slide] { display: none; }
+aside { grid-area: aside; }
+nav {
+	grid-area: nav;
+	text-align: center;
+}
+/*#slides [data-slide]:first-child,*/
+#slides [data-slide].active { display: unset; }
+aside .active,
+nav .active { background-color: red; }
+  </style>
+</head>
+<body>
+  <h1>Wzorzec: Obserwator</h1>
+  <p>Przykład z odtwarzaniem slajdów.</p>
+  <main>
+	<article id="slides">
+	  <section data-slide="1" class="active">1...<br/>
+		<img src="https://refactoring.guru/images/patterns/content/observer/observer-comic-1-en.png" />
+	  </section>
+	  <section data-slide="2">2...<br/>
+		<img src="https://refactoring.guru/images/patterns/diagrams/observer/structure.png" />
+	  </section>
+	  <section data-slide="3">3...<br/>
+		<h3>Zasady Implementacji</h3>
+		<p>1. Podziel logikę biznesową na dwie części: główna funkcjonalność działająca jako Publisher oraz pozostała część jako klasy Subskrybentów</p>
+		<p>2. Zadeklaruj interfejs Subskrybenta z minimum metodą update()</p>
+		<p>3. Utwórz klasę Publishera implementując metodę Subskrybenta i uzupełnij klasę o metody zapisu i wypisu z listy subskrypcji.</p>
+		<p>4. Klasy subskrybentów (klienci) muszą implementować metodę aktualizującą zgodnie z przyjętym Interfejsem. Metoda często przyjmuje parametr z kontekstem infromacyjnym</p>
+		<p>5. Klienci (subskrybenci) musza się zapisać na listę Publishera</p>
+	  </section>
+	  <section data-slide="4">4...<br/>
+		<table>
+		<tr>
+		<th>Zalety</th>
+		<th>Wady</th>
+		</tr>
+		<tr>
+		<td>Realizacja zasady Open/Close Principle: można dodawać nowych subskrybentów bez knieczności modyfikowania kodu Publishera</td>
+		<td>Subskrybenci są powiadamiani w losowej kolejności</td>
+		</tr>
+		<tr>
+		<td>Można ustanowić relacje podczas uruchamiania programu</td>
+		<td></td>
+		</tr>
+		</table>
+	  </section>
+	  <section data-slide="5">5...<br/>
+		<h3>Powiązania z innymi wzorcami</h3>
+		<ul>
+		  <li>Chain of Responsability</li>
+		  <li>Command</li>
+		  <li>Mediator</li>
+		</ul>
+	  </section>
+	</article>
+	<aside>
+	  <ol>
+		<li class="active">Opis wzorca</li>
+		<li>Diagram UML</li>
+		<li>Przykład kodu</li>
+		<li>Wady i zalety</li>
+		<li>Podsumowanie</li>
+	  </ol>
+	</aside>
+	<nav>
+	  <a href="#s1" class="active">1</a>
+	  <a href="#s2">2</a>
+	  <a href="#s3">3</a>
+	  <a href="#s4">4</a>
+	  <a href="#s5">5</a>
+	</nav>
+  </main>
+  <script src="classic-code.js"></script>
+</body>
+</html>
